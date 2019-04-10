@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:fillViewport="true"
+    android:id="@+id/movie_view"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/white">
+
+
+        <ImageView
+            android:id="@+id/movie_back_drop_path"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/placeholder"/>
+
+        <!-- Details layout -->
+        <LinearLayout
+            android:background="@android:color/white"
+            android:id="@+id/movie_details_layout"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
+            android:paddingLeft="21dp"
+            android:paddingRight="30dp">
+
+            <ImageView
+                android:id="@+id/movie_cover"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                tools:src="@drawable/cover"/>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="18dp"
+                android:layout_width="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Title text view -->
+                <TextView
+                    android:id="@+id/movie_title_details"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="@dimen/movie_title"
+                    android:textStyle="bold"
+                    tools:text="Movie title"/>
+
+                <!-- Runtime text view -->
+                <TextView
+                    android:id="@+id/movie_runtime"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/genre"
+                    android:textSize="@dimen/movie_runtime"
+                    tools:text="1h20m"/>
+
+                <!-- Date text view -->
+                <TextView
+                    android:id="@+id/movie_release_date"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="11dp"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/genre"
+                    android:textSize="@dimen/movie_release_date"
+                    tools:text="2015-12-05"/>
+
+                <!-- Rating text view -->
+                <TextView
+                    android:id="@+id/movie_rating"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/genre"
+                    android:textSize="@dimen/movie_rating"
+                    tools:text="5.5"/>
+
+                <!-- Genres text view -->
+                <TextView
+                    android:id="@+id/movie_genre"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/genre"
+                    android:textSize="@dimen/movie_genre"
+                    tools:text="Drama, Romance"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ToggleButton
+            android:focusable="false"
+            android:id="@+id/follow_button"
+            android:layout_below="@+id/movie_similar_holder"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:textOff="@string/follow"
+            android:textOn="@string/following"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/movie_overview"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:paddingBottom="20dp"
+            android:paddingLeft="15dp"
+            tools:text="Overview about the movie"
+            android:paddingRight="15dp"/>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/movie_credits"
+            android:id="@+id/credits_button"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+</ScrollView>

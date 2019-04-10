@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.example.moovielab"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- /Permissions -->
+
+    <application
+        android:name=".MoovieLabApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+
+        <!-- Activities -->
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.activity.HomeActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleTop">
+
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".ui.activity.SearchableActivity"/>
+        </activity>
+
+        <activity android:name=".ui.activity.SearchableActivity"
+                  android:parentActivityName=".ui.activity.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activity.HomeActivity" />
+        </activity>
+
+        <activity
+            android:name=".ui.activity.MovieActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop">
+        </activity>
+
+        <activity
+            android:name=".ui.activity.MovieCreditsActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".ui.activity.MovieActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activity.MovieActivity"/>
+        </activity>
+
+        <activity
+            android:name=".ui.activity.AboutActivity"
+            android:label="@string/about"
+            android:parentActivityName=".ui.activity.HomeActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activity.HomeActivity" />
+            </activity>
+
+        <activity
+            android:name=".ui.activity.PreferencesActivity"
+            android:label="@string/preferences"
+            android:parentActivityName=".ui.activity.HomeActivity">
+            <!-- This intent filter indicates to the system that this is the activity that controls application's data usage -->
+            <intent-filter>
+                <action android:name="android.intent.action.MANAGE_NETWORK_USAGE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activity.HomeActivity" />
+        </activity>
+        <!-- /Activities -->
+
+        <!-- Receivers -->
+        <receiver android:name=".data.handlers.NotificationPublisher"/>
+        <!-- /Receivers -->
+
+        <!-- Services -->
+        <service
+            android:name=".data.services.lists.TheatersListService"
+            android:exported="false"/>
+        <service
+            android:name=".data.services.lists.SoonListService"
+            android:exported="false"/>
+        <!-- /Services -->
+
+        <!-- Provider -->
+        <provider
+            android:name=".data.provider.MoviesProvider"
+            android:authorities="com.example.moovielab.provider"
+  android:enabled="true"
+  android:exported="false"
+            />
+        <!-- /Provider -->
+
+    </application>
+
+</manifest>
